@@ -3,13 +3,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] float movementSpeed = 8f;
+    [SerializeField] float jumpPower = 25f;
+
     Vector2 moveInput;
     Rigidbody2D myRigidbody;
-    [SerializeField] float movementSpeed = 5f;
+    Animator myAnimator;
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -24,12 +28,23 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(moveInput);
     }
 
+    void OnJump(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            myRigidbody.velocity += new Vector2 (0f, jumpPower);
+        }
+    }
+
     void Run()
     {
         // keep velocity y as it currently is, to prevent character from slowly floating downwards
         Vector2 playerVelocity = new Vector2(moveInput.x * movementSpeed, myRigidbody.velocity.y);
-
         myRigidbody.velocity = playerVelocity;
+
+        // check if player is moving (0 is technically ~0.000001, so player would flip to face right whenever idle)
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+        myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
     }
 
     void FlipSprite()

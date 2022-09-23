@@ -6496,7 +6496,7 @@ GameObject:
   - component: {fileID: 1032859631}
   m_Layer: 11
   m_Name: Slime Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7012,7 +7012,7 @@ GameObject:
   - component: {fileID: 1929690726}
   - component: {fileID: 1929690728}
   - component: {fileID: 1929690727}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water TileMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7313,7 +7313,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e2e4d6c19f423b4b8f72ce49c260709, type: 2}
+  - {fileID: 2100000, guid: 65288cef9d01bff4f9d96cd3b1158323, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

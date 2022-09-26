@@ -25,6 +25,7 @@ public class LevelExit : MonoBehaviour
             nextSceneIndex = 0; // load scene 0 again
         }
 
+        FindObjectOfType<ScenePersist>().ResetScenePersist(); // destroy game persist so that it doesn't persist to the next level
         SceneManager.LoadScene(nextSceneIndex); // load next scene
     }
 }
